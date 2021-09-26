@@ -33,12 +33,16 @@
 $(document).ready(function(){
   $("button").click(function(){
     alert("event fired");
-    $.ajax({url: "data.json", 
-        success: function(result) {
+    $.ajax(
+    		{   
+    			type:'GET',
+    		    url: "http://localhost:7777/WebJqueryPractice/userList", 
+    		   success: function(result) {
+    			let parsedjosn  = jQuery.parseJSON(result);
         	$("#form1").css("visibility", "visible");
         	console.log(result)
         	$('#customers').DataTable({
-        	    data: result,
+        	    data: parsedjosn,
         	    columns: [
         	        { data: 'id' },
         	        { data: 'name' },
